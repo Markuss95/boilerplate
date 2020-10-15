@@ -31,6 +31,15 @@ export const removeExpense = ({ id }) => ({
     id
 })
 
+export const startRemoveExpense = ( id ) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
+            dispatch(removeExpense({ id }))
+        })
+    }
+}
+
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
@@ -42,7 +51,7 @@ export const startEditExpense = (id = '', updates = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         return database.ref(`users/${uid}/expenses/${id}`).update(updates).then((ref) => {
-            dispatch(editExpense(id,updates))
+            dispatch(editExpense(id, updates))
         })
     }
 }
