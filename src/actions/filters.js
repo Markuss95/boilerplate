@@ -15,13 +15,13 @@ export const setTextFilter = (text = '') => ({
   });
   
   // SET_START_DATE
-  export const setStartDate = (startDate) => ({
+  export const setStartDate = (date) => ({
     type: 'SET_START_DATE',
-    startDate
-  });
+    date
+  })
   
   // SET_END_DATE
-  export const setEndDate = (endDate) => ({
+  export const setEndDate = (date) => ({
     type: 'SET_END_DATE',
-    endDate
+    date
   });
