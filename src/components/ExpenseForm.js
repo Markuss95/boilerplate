@@ -43,37 +43,37 @@ const ExpenseForm = (props) => {
         }
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                {error}
-                <input
-                    type="text"
-                    placeholder="Description"
-                    value={description}
-                    onChange={handleDescriptionChange}
-                />
-                <input
-                    type="text"
-                    placeholder="Amount"
-                    value={amount}
-                    onChange={handleAmountChange}
-                />
-                <SingleDatePicker
-                    date={date} // momentPropTypes.momentObj or null
-                    onDateChange={handleDateChange} // PropTypes.func.isRequired
-                    focused={calendarFocused} // PropTypes.bool
-                    onFocusChange={handleFocusChange} // PropTypes.func.isRequired
-                    isOutsideRange={() => false}
-                    numberOfMonths={1}
-                />
-                <textarea
-                    type="text"
-                    value={note}
-                    onChange={handleNoteChange}
-                />
-                <button>Save Expense</button>
-            </form>
-        </div>
+        <form className="form" onSubmit={handleSubmit}>
+            {<p className="form__error">{error}</p>}
+            <input className="text-input"
+                type="text"
+                placeholder="Description"
+                value={description}
+                onChange={handleDescriptionChange}
+            />
+            <input className="text-input"
+                type="text"
+                placeholder="Amount"
+                value={amount}
+                onChange={handleAmountChange}
+            />
+            <SingleDatePicker
+                date={date} // momentPropTypes.momentObj or null
+                onDateChange={handleDateChange} // PropTypes.func.isRequired
+                focused={calendarFocused} // PropTypes.bool
+                onFocusChange={handleFocusChange} // PropTypes.func.isRequired
+                isOutsideRange={() => false}
+                numberOfMonths={1}
+            />
+            <textarea className="textarea"
+                type="text"
+                value={note}
+                onChange={handleNoteChange}
+            />
+            <div>
+            <button className="button">Save Expense</button>
+            </div>
+        </form>
     )
 
 }

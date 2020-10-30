@@ -10,7 +10,6 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
         const textMatch  = text ? expense.description.toLowerCase().includes(text.toLowerCase()) : true
         return startDateMatch && endDateMatch && textMatch
     }).sort((a,b) => {
-        console.log(sortBy)
         if(sortBy === 'amount'){
             return a.amount < b.amount ? 1 : -1; 
         }else if(sortBy === 'date'){
