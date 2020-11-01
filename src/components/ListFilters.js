@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { DateRangePicker } from 'react-dates';
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters';
 
 
-const ExpenseListFilters = (props) => {
+const ListFilters = (props) => {
+
     const [calendarFocused, setCalendarFocus] = useState(null)
+    const location = useLocation();
 
     const onTextChange = (e) => {
         props.setTextFilter(e.target.value)
@@ -29,21 +32,34 @@ const ExpenseListFilters = (props) => {
         <div className="content-container">
             <div className="input-group">
                 <div className="input-group__item">
-                    <input className ="text-input"
-                        type='text'
-                        placeholder="Search for Expense"
-                        value={props.filters.text}
-                        onChange={onTextChange}
-                    />
+                {location.pathname === '/todo' 
+                ?<input className="text-input"
+                type='text'
+                placeholder="Search for Todo"
+                value={props.filters.text}
+                onChange={onTextChange}
+            />
+                :<input className="text-input"
+                type='text'
+                placeholder="Search for Expense"
+                value={props.filters.text}
+                onChange={onTextChange}
+            /> }
+                
+                    
                 </div>
-                <div className="input-group__item">
-                    <select className="select"
-                        value={props.filters.sortBy}
-                        onChange={onSortChange}>
-                        <option value="date">Date</option>
-                        <option value="amount">Amount</option>
-                    </select>
-                </div>
+
+                {location.pathname === '/todo' ? '' :
+                    <div className="input-group__item">
+                        <select className="select"
+                            value={props.filters.sortBy}
+                            onChange={onSortChange}>
+                            <option value="date">Date</option>
+                            <option value="amount">Amount</option>
+                        </select>
+                    </div>
+                }
+
                 <div className="input-group__item">
                     <DateRangePicker
                         startDate={props.filters.startDate}
@@ -51,11 +67,11 @@ const ExpenseListFilters = (props) => {
                         onDatesChange={onDatesChange}
                         focusedInput={calendarFocused}
                         onFocusChange={onFocusChange}
-                        showClearDates={true}
+                        showClearDates={false}
                         numberOfMonths={1}
                         isOutsideRange={() => false}
                     />
-                    </div>
+                </div>
             </div>
         </div>
     )
@@ -76,4 +92,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters)
+export default connect(mapStateToProps, mapDispatchToProps)(ListFilters)

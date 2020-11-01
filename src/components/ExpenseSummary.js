@@ -19,8 +19,9 @@ const ExpenseSummary = (props) => {
         <div className="page-header">
             <div className="content-container">
                 <h1 className="page-header__title">Viewing total of<span> {numberOfExpenses}</span> expenses totaling <span>{sumOfAmounts}</span></h1>
-                <div className ="page-header__actions">
-                    <Link className="button" to="/create">Add Expense</Link>
+                <div >
+                    <Link className="button" to="/createExpense">Add Expense</Link>
+                    <Link className="button button--tertiary" to="/todo">View Todo List</Link>
                 </div>
             </div>
         </div>
