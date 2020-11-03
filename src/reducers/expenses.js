@@ -1,4 +1,4 @@
-const expensesReducerDefaultState = [];
+const expensesReducerDefaultState = []
 
 export default (state = expensesReducerDefaultState, action) => {
     switch (action.type) {
@@ -23,6 +23,6 @@ export default (state = expensesReducerDefaultState, action) => {
         case 'REMOVE_EXPENSE': 
             return state.filter((expense) => expense.id !== action.id )
         default:
-            return state;
+            return state
     }
 }

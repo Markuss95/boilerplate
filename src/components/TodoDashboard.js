@@ -1,13 +1,14 @@
 import React from 'react'
-import TodoForm from './TodoForm'
 import TodoSummary from './TodoSummary'
 import ListFilters from './ListFilters'
+import TodoList from './TodoList'
 
 const TodoDasboard = () => {
     return (
         <div>
             <TodoSummary />
             <ListFilters />
+            <TodoList />
         </div>
     )
 }

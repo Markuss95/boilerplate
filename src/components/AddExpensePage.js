@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         startAddExpense: (expense) => dispatch(startAddExpense(expense))
-    };
-};
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddExpensePage)

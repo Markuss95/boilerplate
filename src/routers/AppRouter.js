@@ -9,7 +9,8 @@ import PublicRoute from './PublicRoute'
 import AddExpensePage from '../components/AddExpensePage'
 import EditExpensePage from '../components/EditExpensePage'
 import TodoDasboard from '../components/TodoDashboard'
-import TodoForm from'../components/TodoForm'
+import AddTodoPage from'../components/AddTodoPage'
+import EditTodoPage from '../components/EditTodoPage'
 
 export const history = createHistory();
 
@@ -21,8 +22,9 @@ const AppRouter = () => (
         <PrivateRoute path="/dashboard" component={ExpenseDashboardPage} />
         <PrivateRoute path="/createExpense" component={AddExpensePage} />
         <PrivateRoute path="/todo" component={TodoDasboard} />
-        <PrivateRoute path="/createtodo" component={TodoForm} />
-        <PrivateRoute path="/edit/:id" component={EditExpensePage} />
+        <PrivateRoute path="/createtodo" component={AddTodoPage} />
+        <PrivateRoute path="/edit/:id" component={EditExpensePage} exact={true} />
+        <PrivateRoute path="/edit/todo/:id" component={EditTodoPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
