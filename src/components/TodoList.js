@@ -1,25 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import TodoListItem from './TodoListItem'
+import selectTodos from '../selectors/todos'
 
 const TodoList = (props) => {
-    console.log(props.todos)
     return (
-        <div>
-            {props.todos.length === 0 ?
-                <div> There are no todos</div>
-                :(props.todos.map((todo) => {
-                    return <TodoListItem key={todo.id} {...todo} />
-                })
-                )}
+        <div className="content-container">
+            <div className="list-header">
+                <div>Task</div>
+                <div>Creation date</div>
+            </div>
+            <div className="list-body">
+                {props.todos.length === 0 ?
+                    <div> There are no todos</div>
+                    : (props.todos.map((todo) => {
+                        return <TodoListItem key={todo.id} {...todo} />
+                    })
+                    )}
+            </div>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-
     return {
-        todos: state.todos
+        todos: selectTodos(state.todos,state.filters)
     }
 }
 

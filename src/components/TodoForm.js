@@ -48,7 +48,7 @@ const TodoForm = (props) => {
                     onFocusChange={handleFocusChange} // PropTypes.func.isRequired
                     isOutsideRange={() => false}
                     numberOfMonths={1}
-                    disabled={true}
+                    disabled={false}
                 />
             </div>
             <div>
