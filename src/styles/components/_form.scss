@@ -5,9 +5,15 @@ flex-direction: column;
      margin-bottom: $m-size;
  }
 }
-
 .form__error {
 margin: 0 0 $m-size 0;
 font-style: italic;
 color: red;
+}
+.form__date {
+    display:flex;
+    align-items: center;
+}
+.form__date__title{
+    margin-right: $m-size;
 }

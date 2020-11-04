@@ -3,12 +3,12 @@ import { SingleDatePicker } from 'react-dates'
 import moment from 'moment'
 
 const TodoForm = (props) => {
-    const [description, setDescription] = useState(props.todo  ?props.todo.description :'')
-    const [date, setDate] = useState(props.todo ?moment(props.todo.date) :moment())
+    const [description, setDescription] = useState(props.todo ? props.todo.description : '')
+    const [date, setDate] = useState(props.todo ? moment(props.todo.date) : moment())
     const [calendarFocused, setCalendarFocus] = useState(false)
     const [error, setError] = useState('')
 
-    
+
     const handleDateChange = (date) => {
         setDate(moment(date));
     }
@@ -22,7 +22,7 @@ const TodoForm = (props) => {
         e.preventDefault();
         if (!description) {
             setError('Please make sure your input field is not empty!')
-        }else{
+        } else {
             setError('')
             props.onSubmit({
                 description,
@@ -31,23 +31,26 @@ const TodoForm = (props) => {
         }
     }
     return (
-        <form className ="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
             <p className="form__error">{error}</p>
-            <input value={description}
+            <input className="text-input"
+                value={description}
                 onChange={handleDescriptionChange}
                 type="text"
                 placeholder="What do you need to do?"
             />
-            <span>Creation date:</span>
-            <SingleDatePicker
-                date={date} // momentPropTypes.momentObj or null
-                onDateChange={handleDateChange} // PropTypes.func.isRequired
-                focused={calendarFocused} // PropTypes.bool
-                onFocusChange={handleFocusChange} // PropTypes.func.isRequired
-                isOutsideRange={() => false}
-                numberOfMonths={1}
-                disabled={true}
-            />
+            <div className="form__date">
+                <h3 className="form__date__title">Creation date:</h3>
+                <SingleDatePicker
+                    date={date} // momentPropTypes.momentObj or null
+                    onDateChange={handleDateChange} // PropTypes.func.isRequired
+                    focused={calendarFocused} // PropTypes.bool
+                    onFocusChange={handleFocusChange} // PropTypes.func.isRequired
+                    isOutsideRange={() => false}
+                    numberOfMonths={1}
+                    disabled={true}
+                />
+            </div>
             <div>
                 <button className="button">Save Todo</button>
             </div>

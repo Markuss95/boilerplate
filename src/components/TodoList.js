@@ -3,13 +3,15 @@ import { connect } from 'react-redux'
 import TodoListItem from './TodoListItem'
 
 const TodoList = (props) => {
+    console.log(props.todos)
     return (
         <div>
             {props.todos.length === 0 ?
                 <div> There are no todos</div>
-                :props.todos.map((todo) => {
+                :(props.todos.map((todo) => {
                     return <TodoListItem key={todo.id} {...todo} />
-                })}
+                })
+                )}
         </div>
     )
 }
