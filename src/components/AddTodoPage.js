@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {startAddTodo} from '../actions/todos'
+import { startAddTodo } from '../actions/todos'
 import TodoForm from './TodoForm'
 import { connect } from 'react-redux'
 
@@ -12,7 +12,14 @@ const AddTodoPage = (props) => {
 
     return (
         <div>
-            <TodoForm onSubmit={onSubmit} />
+            <div className="page-header">
+                <div className="content-container">
+                    <h1 className="page-header__title">Add Todo</h1>
+                </div>
+            </div>
+            <div className="content-container">
+                <TodoForm onSubmit={onSubmit} />
+            </div>
         </div>
     )
 }

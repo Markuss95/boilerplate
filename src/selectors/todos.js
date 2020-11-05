@@ -1,7 +1,4 @@
-import moment from 'moment'
-
 export default (todos, { text, startDate, endDate }) => {
-
     return (todos.filter((todo) => {
         const startDateMatch = todo.date >= startDate
         const endDateMatch = todo.date <= endDate

@@ -7,8 +7,9 @@ const TodoList = (props) => {
     return (
         <div className="content-container">
             <div className="list-header">
-                <div>Task</div>
-                <div>Creation date</div>
+                <div className="show-for-desktop">Task</div>
+                <div className="show-for-desktop">Creation date</div>
+                <div className="show-for-mobile">Tasks</div>
             </div>
             <div className="list-body">
                 {props.todos.length === 0 ?
