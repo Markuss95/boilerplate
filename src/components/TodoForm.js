@@ -49,6 +49,7 @@ const TodoForm = (props) => {
                     isOutsideRange={() => false}
                     numberOfMonths={1}
                     disabled={false}
+                    displayFormat="DD/MM/YYYY"
                 />
             </div>
             <div>

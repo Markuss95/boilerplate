@@ -17,9 +17,14 @@
 
 .button--secondary {
     background: #888;
+    
 }
 
 .button--tertiary {
-    background: $brown;
+    background: $orange;
+    margin-left: $l-size;
+}
+.button--quaternary {
+    background: $navy-blue;
     margin-left: $l-size;
 }

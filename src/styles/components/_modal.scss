@@ -1,0 +1,14 @@
+.ReactModalPortal .ReactModal__Overlay--after-open .ReactModal__Content--after-open{
+    max-width: 100rem;
+    max-height: 60rem;
+    margin:auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    button {
+        max-width: 20rem;
+        margin: auto;
+        border-radius: 3px;
+    }
+}
+

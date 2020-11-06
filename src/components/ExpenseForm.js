@@ -64,6 +64,7 @@ const ExpenseForm = (props) => {
                 onFocusChange={handleFocusChange} // PropTypes.func.isRequired
                 isOutsideRange={() => false}
                 numberOfMonths={1}
+                displayFormat="DD/MM/YYYY"
             />
             <textarea className="textarea"
                 type="text"

@@ -7,7 +7,7 @@ const TodoListItem = ({ id, description, date }) => {
         <Link className="list-item"
          to={`edit/todo/${id}`}>
             <h4>{description}</h4>
-            <h4>{moment(date).format('Do MMM YYYY')}</h4>
+            <h4>{moment(date).format('MMMM Do, YYYY')}</h4>
         </Link>
     )
 }
