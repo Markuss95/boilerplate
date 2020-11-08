@@ -10,9 +10,10 @@ export const startAddTodo = (TodoData = {}) => {
         const uid = getState().auth.uid
         const {
             description,
-            date
+            date,
+            completion
         } = TodoData
-        const todo = { description, date }
+        const todo = { description, date,completion}
         return database.ref(`users/${uid}/todos`).push(todo).then((ref) => {
             // console.log(ref.id)
             dispatch(addTodo({

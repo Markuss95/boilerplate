@@ -15,7 +15,7 @@ const TodoList = (props) => {
                 {props.todos.length === 0 ?
                     <div> There are no todos</div>
                     : (props.todos.map((todo) => {
-                        return <TodoListItem key={todo.id} {...todo} />
+                        return <TodoListItem key={todo.id} {...todo} completion ={props.filters.todoSortBy}/>
                     })
                     )}
             </div>
@@ -25,7 +25,8 @@ const TodoList = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        todos: selectTodos(state.todos,state.filters)
+        todos: selectTodos(state.todos,state.filters),
+        filters: state.filters
     }
 }
 

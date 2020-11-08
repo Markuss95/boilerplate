@@ -5,10 +5,11 @@ import moment from 'moment'
 
 const TodoForm = (props) => {
     const [description, setDescription] = useState(props.todo ? props.todo.description : '')
+    const [completion, setCompletion] = useState(props.todo ? props.todo.completion : 'active')
     const [date, setDate] = useState(props.todo ? moment(props.todo.date) : moment())
     const [calendarFocused, setCalendarFocus] = useState(false)
     const [error, setError] = useState('')
-    console.log(props.filters)
+
     const handleDateChange = (date) => {
         setDate(moment(date));
     }
@@ -18,6 +19,9 @@ const TodoForm = (props) => {
     const handleDescriptionChange = (e) => {
         setDescription(e.target.value)
     }
+    const handleSelect= (e) => {
+        setCompletion(e.target.value)
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!description) {
@@ -26,7 +30,8 @@ const TodoForm = (props) => {
             setError('')
             props.onSubmit({
                 description,
-                date: date.valueOf()
+                date: date.valueOf(),
+                completion
             })
         }
     }
@@ -52,7 +57,10 @@ const TodoForm = (props) => {
                     displayFormat="DD/MM/YYYY"
                 />
             </div>
-            <select className="select" >
+            <select className="select" 
+            value = {completion}
+            onChange = {handleSelect}
+            >
             <option value="active">Active</option>
             <option value="completed">Completed</option>
             </select>

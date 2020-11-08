@@ -13,7 +13,15 @@ export const setTextFilter = (text = '') => ({
   export const sortByAmount = () => ({
     type: 'SORT_BY_AMOUNT'
   });
-  
+
+  // TODO_SORT_BY_ACTIVE
+  export const todoSortByActive = () => ({
+    type: 'TODO_SORT_BY_ACTIVE'
+  })
+  // TODO_SORT_BY_COMPLETED
+  export const todoSortByCompleted = () => ({
+    type: 'TODO_SORT_BY_COMPLETED'
+  })
   // SET_START_DATE
   export const setStartDate = (date) => ({
     type: 'SET_START_DATE',

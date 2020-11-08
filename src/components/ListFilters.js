@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { DateRangePicker } from 'react-dates';
-import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters';
+import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate, todoSortByActive, todoSortByCompleted } from '../actions/filters';
 
 
 const ListFilters = (props) => {
-
     const [calendarFocused, setCalendarFocus] = useState(null)
     const location = useLocation();
 
@@ -19,7 +18,14 @@ const ListFilters = (props) => {
         } else if (e.target.value === 'amount') {
             props.sortByAmount();
         }
-    };
+    }
+    const onTodoSortChange = (e) => {
+        if (e.target.value === 'active') {
+            props.todoSortByActive()
+        } else if (e.target.value === 'completed') {
+            props.todoSortByCompleted()
+        }
+    }
     const onDatesChange = ({ startDate, endDate }) => {
         props.setStartDate(startDate)
         props.setEndDate(endDate)
@@ -47,8 +53,18 @@ const ListFilters = (props) => {
                         />}
                 </div>
 
-                {location.pathname === '/todo' ? '' :
-                    <div className="input-group__item">
+                {location.pathname === '/todo'
+                    ? <div className="input-group__item"
+                    >
+                        <select className="select"
+                            onChange={onTodoSortChange}
+                            value={props.filters.todoSortBy}
+                        >
+                            <option value="active">Active</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    : <div className="input-group__item">
                         <select className="select"
                             value={props.filters.sortBy}
                             onChange={onSortChange}>
@@ -86,7 +102,9 @@ const mapDispatchToProps = (dispatch) => {
         sortByAmount: () => dispatch(sortByAmount()),
         sortByDate: () => dispatch(sortByDate()),
         setStartDate: (startDate) => dispatch(setStartDate(startDate)),
-        setEndDate: (endDate) => dispatch(setEndDate(endDate))
+        setEndDate: (endDate) => dispatch(setEndDate(endDate)),
+        todoSortByActive: () => dispatch(todoSortByActive()),
+        todoSortByCompleted: () => dispatch(todoSortByCompleted())
     }
 }
 

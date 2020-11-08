@@ -3,7 +3,7 @@ import moment from 'moment'
 const filterReducerDefaultState = {
     text: '',
     sortBy: 'date',
-    completion: 'active',
+    todoSortBy: 'active',
     startDate: moment().startOf('month'),
     endDate: moment().endOf('month')
 }
@@ -24,6 +24,16 @@ export default (state = filterReducerDefaultState, action) => {
             return {
                 ...state,
                 sortBy: 'date'
+            }
+        case 'TODO_SORT_BY_ACTIVE':
+            return {
+                ...state,
+                todoSortBy: 'active'
+            }
+        case 'TODO_SORT_BY_COMPLETED':
+            return {
+                ...state,
+                todoSortBy: 'completed'
             }
         case 'SET_START_DATE':
             return {
