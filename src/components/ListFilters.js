@@ -32,21 +32,19 @@ const ListFilters = (props) => {
         <div className="content-container">
             <div className="input-group">
                 <div className="input-group__item">
-                {location.pathname === '/todo' 
-                ?<input className="text-input"
-                type='text'
-                placeholder="Search for Todo"
-                value={props.filters.text}
-                onChange={onTextChange}
-            />
-                :<input className="text-input"
-                type='text'
-                placeholder="Search for Expense"
-                value={props.filters.text}
-                onChange={onTextChange}
-            /> }
-                
-                    
+                    {location.pathname === '/todo'
+                        ? <input className="text-input"
+                            type='text'
+                            placeholder="Search for Todo"
+                            value={props.filters.text}
+                            onChange={onTextChange}
+                        />
+                        : <input className="text-input"
+                            type='text'
+                            placeholder="Search for Expense"
+                            value={props.filters.text}
+                            onChange={onTextChange}
+                        />}
                 </div>
 
                 {location.pathname === '/todo' ? '' :

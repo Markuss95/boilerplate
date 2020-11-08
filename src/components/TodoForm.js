@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {connect} from 'react-redux'
 import { SingleDatePicker } from 'react-dates'
 import moment from 'moment'
 
@@ -7,8 +8,7 @@ const TodoForm = (props) => {
     const [date, setDate] = useState(props.todo ? moment(props.todo.date) : moment())
     const [calendarFocused, setCalendarFocus] = useState(false)
     const [error, setError] = useState('')
-
-
+    console.log(props.filters)
     const handleDateChange = (date) => {
         setDate(moment(date));
     }
@@ -52,11 +52,20 @@ const TodoForm = (props) => {
                     displayFormat="DD/MM/YYYY"
                 />
             </div>
+            <select className="select" >
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+            </select>
             <div>
                 <button className="button">Save Todo</button>
             </div>
         </form>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        filters: state.filters
+    }
+}
 
-export { TodoForm as default }
+export default connect(mapStateToProps)(TodoForm)

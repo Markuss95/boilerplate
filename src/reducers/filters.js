@@ -3,6 +3,7 @@ import moment from 'moment'
 const filterReducerDefaultState = {
     text: '',
     sortBy: 'date',
+    completion: 'active',
     startDate: moment().startOf('month'),
     endDate: moment().endOf('month')
 }
