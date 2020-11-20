@@ -5,7 +5,7 @@ const WorkoutSummary = () => {
     return (
         <div className="page-header">
             <div className="content-container">
-            <Link className="button" to="/createtodo">Add a Workout</Link>
+            <Link className="button" to="/createworkout">Log an Exercise</Link>
             </div>
         </div>
     )
