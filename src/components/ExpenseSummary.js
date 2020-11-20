@@ -31,6 +31,7 @@ const ExpenseSummary = (props) => {
                     <Link className="button" to="/createExpense">Add Expense</Link>
                     <button className="button button--quaternary" onClick={handleClick}>View Expense Graph</button>
                     <Link className="button button--tertiary" to="/todo">View Todo List</Link>
+                    <Link className="button button--tertiary" to="/workout">Workout Tracker</Link>
                     <ExpenseModal chartSelected= {chartSelected} handleClickClose={handleClickClose}/>
                 </div>
             </div>

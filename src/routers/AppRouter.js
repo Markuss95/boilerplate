@@ -11,6 +11,7 @@ import EditExpensePage from '../components/EditExpensePage'
 import TodoDasboard from '../components/TodoDashboard'
 import AddTodoPage from'../components/AddTodoPage'
 import EditTodoPage from '../components/EditTodoPage'
+import WorkoutDashboardPage from '../components/WorkoutDashboardPage'
 
 export const history = createHistory();
 
@@ -25,6 +26,7 @@ const AppRouter = () => (
         <PrivateRoute path="/createtodo" component={AddTodoPage} />
         <PrivateRoute path="/edit/:id" component={EditExpensePage} exact={true} />
         <PrivateRoute path="/edit/todo/:id" component={EditTodoPage} />
+        <PrivateRoute path="/workout" component={WorkoutDashboardPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

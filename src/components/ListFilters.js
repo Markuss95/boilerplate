@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { DateRangePicker } from 'react-dates';
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate, todoSortByActive, todoSortByCompleted } from '../actions/filters';
 
-
 const ListFilters = (props) => {
     const [calendarFocused, setCalendarFocus] = useState(null)
     const location = useLocation();
