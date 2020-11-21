@@ -26,6 +26,35 @@ export const startAddWorkout = (WorkoutData = {}) => {
         })
     }
 }
+// EDIT_WORKOUT
+export const editWorkout = (id, updates) => ({
+    type: 'EDIT_WORKOUT',
+    id,
+    updates
+})
+
+export const startEditWorkout = (id = '', updates = {}) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/workouts/${id}`).update(updates).then((ref) => {
+            dispatch(editWorkout(id, updates))
+        })
+    }
+}
+// REMOVE_WORKOUT
+export const removeWorkout = ({ id }) => ({
+    type: 'REMOVE_WORKOUT',
+    id
+})
+
+export const startRemoveWorkout = ( id ) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/workouts/${id}`).remove().then(() => {
+            dispatch(removeWorkout({ id }))
+        })
+    }
+}
 
 //SET_WORKOUTS
 export const setWorkouts = (workouts) => ({

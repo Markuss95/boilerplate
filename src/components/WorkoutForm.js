@@ -3,14 +3,13 @@ import { SingleDatePicker } from 'react-dates'
 import moment from 'moment'
 
 const WorkoutForm = (props) => {
-    // const [date, setDate] = useState(props.todo ? moment(props.todo.date) : moment())
-    const [date, setDate] = useState(moment())
+    const [date, setDate] = useState(props.workout ? moment(props.workout.date) : moment())
     const [calendarFocused, setCalendarFocus] = useState(false)
-    const [exercise, setExercise] = useState('Bench Press')
+    const [exercise, setExercise] = useState(props.workout?props.workout.exercise:'Bench Press')
     const [error, setError] = useState('')
-    const [sets, setSets] = useState('')
-    const [reps, setReps] = useState('')
-    const [weight, setWeight] = useState('')
+    const [sets, setSets] = useState(props.workout?props.workout.sets:'')
+    const [reps, setReps] = useState(props.workout?props.workout.reps:'')
+    const [weight, setWeight] = useState(props.workout?props.workout.weight:'')
 
     const handleDateChange = (date) => {
         setDate(moment(date));
@@ -61,7 +60,7 @@ const WorkoutForm = (props) => {
     return (
         <form className="form" onSubmit={handleSubmit}>
             <p className="form__error">{error}</p>
-            <select className="select" onChange={handleSelect}>
+            <select value ={exercise} className="select" onChange={handleSelect}>
                 <option value="Bench Press">Barbell Bench Press</option>
                 <option value="Incl. Dumbell Press">Inclide Dumbell Press</option>
                 <option value="Overhead Press">Overhead Press</option>

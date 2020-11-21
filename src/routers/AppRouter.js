@@ -11,6 +11,7 @@ import EditExpensePage from '../components/EditExpensePage'
 import TodoDasboard from '../components/TodoDashboard'
 import AddTodoPage from'../components/AddTodoPage'
 import EditTodoPage from '../components/EditTodoPage'
+import EditWorkoutPage from '../components/EditWorkoutPage'
 import WorkoutDashboardPage from '../components/WorkoutDashboardPage'
 import AddWorkoutPage from '../components/AddWorkoutPage'
 
@@ -29,6 +30,7 @@ const AppRouter = () => (
         <PrivateRoute path="/edit/todo/:id" component={EditTodoPage} />
         <PrivateRoute path="/workout" component={WorkoutDashboardPage} />
         <PrivateRoute path="/createWorkout" component={AddWorkoutPage} />
+        <PrivateRoute path="/edit/workout/:id" component={EditWorkoutPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
