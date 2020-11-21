@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { SingleDatePicker } from 'react-dates'
 import moment from 'moment'
 
-const WorkoutForm = () => {
+const WorkoutForm = (props) => {
     // const [date, setDate] = useState(props.todo ? moment(props.todo.date) : moment())
     const [date, setDate] = useState(moment())
     const [calendarFocused, setCalendarFocus] = useState(false)
+    const [exercise, setExercise] = useState('Bench Press')
     const [error, setError] = useState('')
     const [sets, setSets] = useState('')
     const [reps, setReps] = useState('')
     const [weight, setWeight] = useState('')
+
     const handleDateChange = (date) => {
         setDate(moment(date));
     }
@@ -19,31 +21,54 @@ const WorkoutForm = () => {
     const handleSetChange = (e) => {
         if (e.target.value.match(/^[1-9]\d*$/)) {
             setSets(e.target.value)
+        }else {
+            setSets('')
         }
     }
     const handleRepChange = (e) => {
         if (e.target.value.match(/^[1-9]\d*$/)) {
             setReps(e.target.value)
+        }else {
+            setReps('')
         }
     }
     const handleWeightChange = (e) => {
         if (e.target.value.match(/^[1-9]\d*$/)) {
             setWeight(e.target.value)
+        }else {
+            setWeight('')
+        }
+    }
+    const handleSelect= (e) => {
+        setExercise(e.target.value)
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(!sets || !reps || !weight){
+            setError('Please make sure your input fields are not empty!')
+        } else {
+            setError('')
+            props.onSubmit({
+                sets,
+                reps,
+                weight,
+                exercise,
+                date: date.valueOf()
+            })
         }
     }
 
     return (
-        <form className="form">
-            <p className="form__error"></p>
-            <select className="select"
-            >
-                <option value="bench">Barbell Bench Press</option>
-                <option value="completed">Inclide Dumbell Press</option>
-                <option value="overhead">Overhead Press</option>
-                <option value="arnold">Arnold Press</option>
-                <option value="rows">Bent Over Rows</option>
-                <option value="deadlifts">Deadlifts</option>
-                <option value="squats" >Squats</option>
+        <form className="form" onSubmit={handleSubmit}>
+            <p className="form__error">{error}</p>
+            <select className="select" onChange={handleSelect}>
+                <option value="Bench Press">Barbell Bench Press</option>
+                <option value="Incl. Dumbell Press">Inclide Dumbell Press</option>
+                <option value="Overhead Press">Overhead Press</option>
+                <option value="Arnold Press">Arnold Press</option>
+                <option value="Rows">Bent Over Rows</option>
+                <option value="Deadlifts">Deadlifts</option>
+                <option value="Squats" >Squats</option>
             </select>
             <div className="form-input">
                 <h3>Sets:</h3>
@@ -60,7 +85,7 @@ const WorkoutForm = () => {
                     type="number"
                     value={reps}
                     onChange={handleRepChange}
-                    placeholder="Number of reps"
+                    placeholder="Sum of reps over all sets"
                 />
             </div>
             <div className="form-input">

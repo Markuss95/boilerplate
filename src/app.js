@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import {login,logout} from './actions/auth';
 import {startSetExpenses} from './actions/expenses';
 import {startSetTodos} from './actions/todos';
+import {startSetWorkouts} from './actions/workouts'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
@@ -33,6 +34,7 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(login(user.uid));
     store.dispatch(startSetExpenses())
     store.dispatch(startSetTodos())
+    store.dispatch(startSetWorkouts())
     renderApp();
     if(history.location.pathname === '/') {
       history.push('/dashboard');

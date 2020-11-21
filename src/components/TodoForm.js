@@ -23,7 +23,7 @@ const TodoForm = (props) => {
         setCompletion(e.target.value)
     }
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         if (!description) {
             setError('Please make sure your input field is not empty!')
         } else {

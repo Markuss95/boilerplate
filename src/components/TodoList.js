@@ -13,7 +13,9 @@ const TodoList = (props) => {
             </div>
             <div className="list-body">
                 {props.todos.length === 0 ?
-                    <div> There are no todos</div>
+                    <div className="list-item list-item--message">
+                        No todos
+                    </div>
                     : (props.todos.map((todo) => {
                         return <TodoListItem key={todo.id} {...todo} completion ={props.filters.todoSortBy}/>
                     })
