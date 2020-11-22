@@ -5,7 +5,7 @@ import moment from 'moment'
 const WorkoutForm = (props) => {
     const [date, setDate] = useState(props.workout ? moment(props.workout.date) : moment())
     const [calendarFocused, setCalendarFocus] = useState(false)
-    const [exercise, setExercise] = useState(props.workout?props.workout.exercise:'Bench Press')
+    const [exercise, setExercise] = useState(props.workout?props.workout.exercise:'Barbell Bench Press')
     const [error, setError] = useState('')
     const [sets, setSets] = useState(props.workout?props.workout.sets:'')
     const [reps, setReps] = useState(props.workout?props.workout.reps:'')
@@ -17,13 +17,13 @@ const WorkoutForm = (props) => {
     const handleFocusChange = (focus) => {
         setCalendarFocus(focus.focused)
     }
-    const handleSetChange = (e) => {
-        if (e.target.value.match(/^[1-9]\d*$/)) {
-            setSets(e.target.value)
-        }else {
-            setSets('')
-        }
-    }
+    // const handleSetChange = (e) => {
+    //     if (e.target.value.match(/^[1-9]\d*$/)) {
+    //         setSets(e.target.value)
+    //     }else {
+    //         setSets('')
+    //     }
+    // }
     const handleRepChange = (e) => {
         if (e.target.value.match(/^[1-9]\d*$/)) {
             setReps(e.target.value)
@@ -43,7 +43,7 @@ const WorkoutForm = (props) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        if(!sets || !reps || !weight){
+        if(!reps || !weight){
             setError('Please make sure your input fields are not empty!')
         } else {
             setError('')
@@ -61,23 +61,15 @@ const WorkoutForm = (props) => {
         <form className="form" onSubmit={handleSubmit}>
             <p className="form__error">{error}</p>
             <select value ={exercise} className="select" onChange={handleSelect}>
-                <option value="Bench Press">Barbell Bench Press</option>
-                <option value="Incl. Dumbell Press">Inclide Dumbell Press</option>
+                <option value="Barbell Bench Press">Barbell Bench Press</option>
+                <option value="Inclide Dumbell Press">Inclide Dumbell Press</option>
                 <option value="Overhead Press">Overhead Press</option>
                 <option value="Arnold Press">Arnold Press</option>
-                <option value="Rows">Bent Over Rows</option>
+                <option value="Bent Over Rows">Bent Over Rows</option>
                 <option value="Deadlifts">Deadlifts</option>
                 <option value="Squats" >Squats</option>
             </select>
-            <div className="form-input">
-                <h3>Sets:</h3>
-                <input className="text-input"
-                    type="number"
-                    value={sets}
-                    onChange={handleSetChange}
-                    placeholder="Number of sets"
-                />
-            </div>
+           
             <div className="form-input">
                 <h3>Reps:</h3>
                 <input className="text-input"

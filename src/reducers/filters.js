@@ -4,8 +4,8 @@ const filterReducerDefaultState = {
     text: '',
     sortBy: 'date',
     todoSortBy: 'active',
-    startDate: moment().startOf('month'),
-    endDate: moment().endOf('month')
+    startDate: moment().startOf('year'),
+    endDate: moment().endOf('year')
 }
 
 export default (state = filterReducerDefaultState, action) => {

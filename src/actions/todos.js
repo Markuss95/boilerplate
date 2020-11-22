@@ -15,7 +15,6 @@ export const startAddTodo = (TodoData = {}) => {
         } = TodoData
         const todo = { description, date,completion}
         return database.ref(`users/${uid}/todos`).push(todo).then((ref) => {
-            // console.log(ref.id)
             dispatch(addTodo({
                 id: ref.key,
                 ...todo

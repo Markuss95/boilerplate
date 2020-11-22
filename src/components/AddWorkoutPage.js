@@ -4,7 +4,6 @@ import WorkoutForm from './WorkoutForm'
 import { startAddWorkout } from '../actions/workouts'
 
 const AddWorkoutPage = (props) => {
-    console.log(props.workouts)
     const onSubmit = (workout) => {
         props.startAddWorkout(workout)
         props.history.push('/workout')
