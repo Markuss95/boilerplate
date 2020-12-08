@@ -17,13 +17,13 @@ const WorkoutForm = (props) => {
     const handleFocusChange = (focus) => {
         setCalendarFocus(focus.focused)
     }
-    // const handleSetChange = (e) => {
-    //     if (e.target.value.match(/^[1-9]\d*$/)) {
-    //         setSets(e.target.value)
-    //     }else {
-    //         setSets('')
-    //     }
-    // }
+    const handleSetChange = (e) => {
+        if (e.target.value.match(/^[-+]?(?:[0-9]+,)*[0-9]+(?:\.[0-9]+)?$/)) {
+            setSets(e.target.value)
+        }else {
+            setSets('')
+        }
+    }
     const handleRepChange = (e) => {
         if (e.target.value.match(/^[1-9]\d*$/)) {
             setReps(e.target.value)
@@ -69,14 +69,24 @@ const WorkoutForm = (props) => {
                 <option value="Deadlifts">Deadlifts</option>
                 <option value="Squats" >Squats</option>
             </select>
-           
+
+            <div className="form-input">
+                <h3>Sets:</h3>
+                <input className="text-input"
+                    type="number"
+                    value={sets}
+                    onChange={handleSetChange}
+                    placeholder="Number of sets"
+                />
+            </div>
+            
             <div className="form-input">
                 <h3>Reps:</h3>
                 <input className="text-input"
                     type="number"
                     value={reps}
                     onChange={handleRepChange}
-                    placeholder="Sum of reps over all sets"
+                    placeholder="Number of reps"
                 />
             </div>
             <div className="form-input">

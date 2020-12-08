@@ -24,8 +24,7 @@ const AddWorkoutPage = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        workouts: state.workouts,
-        expenses: state.expenses
+        workouts: state.workouts
     }
 }
 const mapDispatchToProps = (dispatch) => {

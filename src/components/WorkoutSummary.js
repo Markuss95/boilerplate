@@ -15,7 +15,6 @@ const WorkoutSummary = (props) => {
         <div className="page-header">
             <div className="content-container">
                 <Link className="button" to="/createworkout">Log an Exercise</Link>
-                <button className="button button--quaternary" onClick={handleClick}>View {selectedExercise} Graph</button>
                 <WorkoutModal chartSelected={chartSelected} handleClickClose={handleClickClose} />
             </div>
         </div>

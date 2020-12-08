@@ -9,7 +9,7 @@ const WorkoutList = (props) => {
             <div className="list-header">
                 <div className="show-for-mobile">Exercises</div>
                 <div className="show-for-desktop">Exercise</div>
-                <div className="show-for-desktop">Volume</div>
+                <div className="show-for-desktop">Sets/Reps/Wght</div>
             </div>
             <div className="list-body">
                 {props.workouts.length === 0
