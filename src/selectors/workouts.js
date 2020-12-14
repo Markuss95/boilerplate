@@ -4,5 +4,5 @@ export default (workouts, {sortBy, startDate, endDate}) => {
         const startDateMatch = workout.date >= startDate
         const endDateMatch = workout.date <= endDate
         return startDateMatch && endDateMatch && exerciseMatch
-    })).sort((a,b) => a.date -b.date)
+    })).sort((a,b) => b.date -a.date)
 }
